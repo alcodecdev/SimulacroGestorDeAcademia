@@ -58,7 +58,11 @@ public class ModuleController {
 
         moduleDTO.setId(module.getId());
         moduleDTO.setName(module.getName());
-        moduleDTO.setTeacherId(module.getTeacher().getId());
+
+        if (module.getTeacher() != null) {
+            moduleDTO.setTeacherId(module.getTeacher().getId());
+        }
+
         moduleDTO.setStudentIds(module.getStudents().stream().map(Student::getId).toList());
 
         model.addAttribute("module", moduleDTO);

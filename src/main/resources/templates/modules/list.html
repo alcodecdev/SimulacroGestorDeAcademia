@@ -20,7 +20,7 @@
         <tr th:each="module : ${modules}">
             <td th:text="${module.name}"></td>
             <td th:text="${module.credits}"></td>
-            <td th:text="${module.teacher.name}"></td>
+            <td th:text="${module.teacher != null ? module.teacher.name : 'Sin profesor'}"></td>
             <td>
                 <a th:href="@{/modules/{id}(id=${module.id})}" class="btn btn-info btn-sm">Detail</a>
                 <a th:href="@{/modules/edit/{id}(id=${module.id})}" class="btn btn-info btn-sm">Edit</a>

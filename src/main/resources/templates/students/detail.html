@@ -29,14 +29,14 @@
         <tr th:each="module : ${student.modules}">
             <td th:text="${module.name}"></td>
             <td th:text="${module.credits}"></td>
-            <td th:text="${module.teacher.name}"></td>
+            <td th:text="${module.teacher != null ? module.teacher.name : 'Sin profesor'}"></td>
         </tr>
         </tbody>
     </table>
 
+    <h3 th:if="${student.modules.size()>0}">Matricula correcta</h3>
+
     <a href="/students" class="btn btn-secondary">Back to List</a>
-
-
 
 </div>
 </body>

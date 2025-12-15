@@ -17,7 +17,7 @@
             <p class="card-text">
                 <strong>ID:</strong> <span th:text="${module.id}"></span><br>
                 <strong>Credits:</strong> <span th:text="${module.credits}"></span><br>
-                <strong>Teacher:</strong> <span th:text="${module.teacher.name}"></span>
+                <strong>Teacher:</strong><span th:text="${module.teacher != null ? module.teacher.name : 'Sin profesor'}"></span>
             </p>
         </div>
     </div>

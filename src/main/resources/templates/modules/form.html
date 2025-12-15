@@ -28,8 +28,14 @@
     <div class="form-group" th:classappend="${#fields.hasErrors('teacherId')} ? 'has-error'">
         <label>Teachers:</label>
         <select class="form-control" th:field="*{teacherId}">
-            <option value="" disabled>Selecciona un profesor</option>
-            <option th:each="t : ${teachers}" th:value="${t.id}" th:text="${t.name}"></option>
+            <option value="" th:if="${module.teacherId == null}" selected>Selecciona un profesor</option>
+
+            <!-- Opciones de profesores -->
+            <option th:each="t : ${teachers}"
+                    th:value="${t.id}"
+                    th:text="${t.name}"
+                    th:selected="${module.teacherId != null} ? ${module.teacherId == t.id} : false">
+            </option>
         </select>
         <div class="help-block" th:errors="*{teacherId}"></div>
     </div>

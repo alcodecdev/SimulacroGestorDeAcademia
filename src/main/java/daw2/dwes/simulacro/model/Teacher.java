@@ -22,9 +22,9 @@ public class Teacher {
     String name;
 
     @Column(name = "speciality",length = 255)
-    String speciality;
+    String specialty;
 
     @OneToMany(mappedBy = "teacher")
-    private List<Module>  teachers;
+    private List<Module>  modules;
 
 }

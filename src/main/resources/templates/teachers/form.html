@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Teacher</title>
+</head>
+<body>
+<div th:insert="layout/menu :: menu"></div>
+
+<h2 th:text="${teacher.id} != null ? 'Modified Teacher' : 'New Teacher'"></h2>
+
+<form th:action="@{/teachers/guardar}" th:object="${teacher}" method="post">
+
+    <input type="hidden" th:field="*{id}" />
+
+    <div class="form-group" th:classappend="${#fields.hasErrors('name')}? 'has-error'">
+        <label>Nombre:</label>
+        <input type="text" th:field="*{name}" class="form-control" placeholder="Ingrese el nombre" required/>
+        <div class="help-block" th:errors="*{name}"></div>
+    </div>
+
+    <div class="form-group" th:classappend="${#fields.hasErrors('specialty')}? 'has-error'">
+        <label>Specialty:</label>
+        <input type="text" th:field="*{specialty}" class="form-control" placeholder="Ingrese la especialidad" required/>
+        <div class="help-block" th:errors="*{specialty}"></div>
+    </div>
+
+    <div class="form-group" th:classappend="${#fields.hasErrors('modulesIds')}? 'has-error'">
+        <label>Modules:</label>
+        <div th:each="m : ${modules}">
+            <label>
+                <input type="checkbox" th:value="${m.id}" th:field="*{modulesIds}">
+                <span th:text="${m.name}"></span>
+            </label>
+        </div>
+        <div class="help-block" th:errors="*{modulesIds}"></div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Enviar</button>
+    <a href="/teachers" class="btn btn-default">Cancelar</a>
+
+</form>
+</body>
+</html>

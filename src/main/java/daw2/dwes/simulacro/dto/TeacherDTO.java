@@ -15,7 +15,7 @@ public class TeacherDTO {
     private String name;
 
     @NotBlank(message = "Introduce una especialidad")
-    private String speciality;
+    private String specialty;
 
     @Size(min=1,message = "Debes seleccionar un modulo")
     private List<Long> modulesIds;
