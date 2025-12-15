@@ -21,7 +21,10 @@
             <td th:text="${st.name}"></td>
             <td th:text="${st.email}"></td>
             <td>
-                <a th:href="@{/students/{id}(id=${st.id})}" class="btn btn-info btn-sm">Detail</a>
+                <!--SIN @REQUESTPARAM-->
+                <!--<a th:href="@{/students/{id}(id=${student.id})}">Ver detalle</a>-->
+                <!--CON @REQUESTPARAM-->
+                <a th:href="@{/students/detail(id=${st.id})}" class="btn btn-info btn-sm">Detail</a>
                 <a th:href="@{/students/edit/{id}(id=${st.id})}" class="btn btn-info btn-sm">Edit</a>
                 <a th:href="@{/students/delete/{id}(id=${st.id})}" class="btn btn-info btn-sm">Delete</a>
             </td>

@@ -40,8 +40,16 @@ public class StudentController {
 
     }
 
-    @GetMapping("/{id}")
+    /*
+    @GetMapping("/{id}") sin @RequestParam
     public String detail(@PathVariable Long id, Model model) {
+        Student student = studentService.findById(id);
+        model.addAttribute("student", student);
+        return "students/detail";
+    }
+*/
+    @GetMapping("/detail")
+    public String detail(@RequestParam("id") Long id, Model model) {
         Student student = studentService.findById(id);
         model.addAttribute("student", student);
         return "students/detail";
