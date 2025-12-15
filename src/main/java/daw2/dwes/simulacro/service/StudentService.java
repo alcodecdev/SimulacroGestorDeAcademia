@@ -37,4 +37,9 @@ public class StudentService {
     public void delete(Long id) {
         studentRepository.deleteById(id);
     }
+
+    public List<Student> filterStudents(String studentName, String moduleName) {
+        return studentRepository.findByStudentNameAndModuleName(studentName, moduleName);
+    }
+
 }

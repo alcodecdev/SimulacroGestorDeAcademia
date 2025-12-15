@@ -32,6 +32,18 @@ public class StudentController {
 
     }
 
+    @GetMapping("/filter")
+    public String filter(
+            @RequestParam(value = "studentName", required = false) String studentName,
+            @RequestParam(value = "moduleName", required = false) String moduleName,
+            Model model) {
+
+        List<Student> students = studentService.filterStudents(studentName, moduleName);
+        model.addAttribute("students", students);
+        return "students/list";
+    }
+
+
     @GetMapping("/new")
     public String newStudent(Model model) {
         model.addAttribute("student", new StudentDTO());
@@ -54,6 +66,7 @@ public class StudentController {
         model.addAttribute("student", student);
         return "students/detail";
     }
+
 
     @GetMapping("/edit/{id}")
     public String edit(@PathVariable Long id, Model model) {
